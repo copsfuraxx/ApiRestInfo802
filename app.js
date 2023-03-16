@@ -12,13 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Home route
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Welcome to RouteCost API." });
 });
 
 // Un véhicule électrique consomme entre 12 et 20 ( soit 16 en moyenne ) kWh/100 km
 // Le prix au kilowattheure est d'environ 0,1582 € TTC.
-app.post('/api/cost', (req, res) => {
+app.post('/cost', (req, res) => {
     let distance = req.body.distance;
     let cost = distance * 16 / 100 * 0.1582;
     res.send({cost: cost});
